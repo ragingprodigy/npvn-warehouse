@@ -13,6 +13,8 @@ import { Notifier } from './shared/notifier';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { LoginModule } from './login/login.module';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -25,6 +27,7 @@ import { AppRoutingModule } from './app-routing.module';
       prefix: LOCAL_STORAGE_PREFIX,
       storageType: 'sessionStorage'
     }),
+    LoginModule,
     AppRoutingModule
   ],
   providers: [
