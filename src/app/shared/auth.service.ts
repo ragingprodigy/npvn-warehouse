@@ -59,7 +59,7 @@ export class AuthService {
   }
 
   public login(payload: any, successROute: string): Observable<any> {
-    const loginObservable: Observable<any> = this._http.post('login', payload).map(this.bp.extractResponse);
+    const loginObservable: Observable<any> = this._http.post(this.bp.getFullUrl('login'), payload).map(this.bp.extractResponse);
     const loginSubject = new Subject<any>();
 
     loginObservable.subscribe(
