@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { LoginModule } from './login/login.module';
+import { LoaderComponent } from './shared/loader.component';
 
 @NgModule({
   declarations: [
