@@ -7,10 +7,10 @@
 @import 'variables';
 
 html {
-  // height: 100vh;
+  height: 100vh;
 
   body {
-    height: 100%;
+    height: calc(100% - 56px);
     background: transparentize(#000, 0.85);
     color: $text-primary;
     margin: 0;

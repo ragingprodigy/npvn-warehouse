@@ -1,3 +1,26 @@
-<p>
-  login works!
-</p>
+<div class = "m-container">
+  <div class="wrapper d-flex align-items-center justify-content-center">
+    <form class="form-signin align-self-center" [formGroup]="form" (submit)="attemptLogin()">       
+      <h3 class="form-signin-heading">Please Sign In</h3>
+      <hr class="colorgraph"><br>
+
+      <input type="text" autofocus formControlName="email" class="form-control" placeholder="Email Address" />
+      <input type="password" formControlName="password" class="form-control" placeholder="Password" />
+
+      <button class="btn-accent btn-lg btn-block" [disabled]="form.invalid || showLoader" type="submit">
+        Login <i class="fa fa-arrow-right" aria-hidden="true"></i>
+      </button>
+
+      <ngb-alert type="danger" [dismissible]="false" *ngIf="loginError">
+        <ul>
+          <li *ngIf="loginError.user_not_found">{{loginError.user_not_found}}</li>
+          <li *ngIf="loginError.email">{{loginError.email}}</li>
+          <li *ngIf="loginError.password">{{loginError.password}}</li>
+          <li *ngIf="loginError.others">{{loginError.others}}</li>
+        </ul>
+      </ngb-alert>
+
+      <app-loader [loading]="loading"></app-loader>
+    </form>
+  </div>
+</div>
