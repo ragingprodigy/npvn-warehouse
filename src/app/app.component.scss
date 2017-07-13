@@ -1,0 +1,16 @@
+.attribution {
+    position: fixed;
+    bottom: 0em;
+    right: 1em;
+    font-size: 12px;
+
+    a {
+        text-decoration: none;
+        color: transparentize(blue, 0.5);
+        font-weight: bold;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
