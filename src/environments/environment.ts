@@ -5,5 +5,7 @@
 
 export const environment = {
   production: false,
-  api: 'http://npvn-tools.dev/api/'
+  api: 'http://npvn-tools.dev/api/',
+  default_email: '',
+  default_password: ''
 };
