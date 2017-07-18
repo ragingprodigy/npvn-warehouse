@@ -4,6 +4,10 @@ import { AuthGuard } from '../shared/auth.guard';
 
 import { ProtectedComponent } from './protected.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AllocateComponent } from './allocate/allocate.component';
+import { DispatchComponent } from './dispatch/dispatch.component';
+import { EnrollComponent } from './enroll/enroll.component';
+import { UnbundleComponent } from './unbundle/unbundle.component';
 
 const routes: Routes = [
   {
@@ -13,6 +17,11 @@ const routes: Routes = [
     children: [
       { path: '', component: DashboardComponent },
       { path: 'dashboard', component: DashboardComponent },
+
+      { path: 'unbundle', component: UnbundleComponent },
+      { path: 'allocate', component: AllocateComponent },
+      { path: 'enroll', component: EnrollComponent },
+      { path: 'dispatch', component: DispatchComponent },
     ]
   }
 ];

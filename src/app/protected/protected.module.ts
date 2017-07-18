@@ -7,6 +7,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProtectedRoutingModule } from './protected-routing.module';
 
 import { SharedModule } from '../shared';
+import { UnbundleComponent } from './unbundle/unbundle.component';
+import { EnrollComponent } from './enroll/enroll.component';
+import { AllocateComponent } from './allocate/allocate.component';
+import { DispatchComponent } from './dispatch/dispatch.component';
 
 @NgModule({
   imports: [
@@ -15,6 +19,6 @@ import { SharedModule } from '../shared';
     SharedModule,
     ProtectedRoutingModule
   ],
-  declarations: [ProtectedComponent, DashboardComponent]
+  declarations: [ProtectedComponent, DashboardComponent, UnbundleComponent, EnrollComponent, AllocateComponent, DispatchComponent]
 })
 export class ProtectedModule { }
