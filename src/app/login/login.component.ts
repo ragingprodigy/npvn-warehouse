@@ -42,8 +42,9 @@ export class LoginComponent implements OnInit {
       this.form.disable();
       this.loginError = null;
 
-      this.auth.login(this.form.value, '/dashboard').subscribe(
+      this.auth.login(this.form.value, 'dashboard').subscribe(
         (loginSuccess: boolean) => {
+          console.log(`Login response received: ${loginSuccess}`);
           if (loginSuccess) {
             this.loginErrorhandler()
           }

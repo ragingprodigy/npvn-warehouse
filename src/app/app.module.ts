@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LocalStorageModule, LocalStorageService } from 'angular-2-local-storage';
@@ -16,7 +17,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { LoginModule } from './login/login.module';
-import { LoaderComponent } from './shared/loader.component';
+import { ProtectedModule } from './protected/protected.module';
 
 @NgModule({
   declarations: [
@@ -31,11 +32,13 @@ import { LoaderComponent } from './shared/loader.component';
       storageType: 'sessionStorage'
     }),
     LoginModule,
+    ProtectedModule,
     AppRoutingModule
   ],
   providers: [
     BaseProvider, NpvnService, AuthGuard, AuthService, Notifier, JwtHelper,
-    { provide: Http, useFactory: provideHttpfactory, deps: [ XHRBackend, RequestOptions, LocalStorageService ] }
+    { provide: Http, useFactory: provideHttpfactory, deps: [ XHRBackend, RequestOptions, LocalStorageService ] },
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })
