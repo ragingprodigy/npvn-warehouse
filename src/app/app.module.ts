@@ -38,7 +38,7 @@ import { ProtectedModule } from './protected/protected.module';
   providers: [
     BaseProvider, NpvnService, AuthGuard, AuthService, Notifier, JwtHelper,
     { provide: Http, useFactory: provideHttpfactory, deps: [ XHRBackend, RequestOptions, LocalStorageService ] },
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
+    // { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })

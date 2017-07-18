@@ -1,16 +1,29 @@
 .attribution {
-    position: fixed;
-    bottom: 0em;
-    right: 1em;
-    font-size: 12px;
+  position: fixed;
+  bottom: 0em;
+  right: 1em;
+  font-size: 12px;
 
-    a {
-        text-decoration: none;
-        color: transparentize(blue, 0.5);
-        font-weight: bold;
+  a {
+    text-decoration: none;
+    color: transparentize(blue, 0.5);
+    font-weight: bold;
 
-        &:hover {
-            text-decoration: underline;
-        }
+    &:hover {
+      text-decoration: underline;
     }
+  }
+}
+
+.nav-item {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.logout {
+  color: red;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
