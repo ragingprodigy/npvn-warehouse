@@ -8,6 +8,7 @@ import { AllocateComponent } from './allocate/allocate.component';
 import { DispatchComponent } from './dispatch/dispatch.component';
 import { EnrollComponent } from './enroll/enroll.component';
 import { UnbundleComponent } from './unbundle/unbundle.component';
+import { DetailsComponent } from './unbundle/details/details.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,8 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
 
       { path: 'unbundle', component: UnbundleComponent },
+      { path: 'unbundle/:imei', component: DetailsComponent },
+
       { path: 'allocate', component: AllocateComponent },
       { path: 'enroll', component: EnrollComponent },
       { path: 'dispatch', component: DispatchComponent },

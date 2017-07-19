@@ -41,11 +41,7 @@ export class BaseProvider {
       return Observable.throw('Invalid response. Please check your internet connection.');
     }
 
-    if (body.meta.status != 1) {
-      return Observable.throw(body.meta.message);
-    }
-
-    return body.data || {};
+    return body || {};
   }
 
   /**

@@ -10,8 +10,29 @@ import 'rxjs/add/operator/catch';
 export class NpvnService {
   constructor(private _http: Http, private bp: BaseProvider) { }
 
-  public login(payload: any): Observable<any> {
-    return this._http.post('login', payload)
+  /**
+   * List Device Types
+   * @return Observable<Array<any>>
+   */
+  public listDeviceTypes(): Observable<Array<any>> {
+    return this._http.get(this.bp.getFullUrl('list-devices'))
+    .map(this.bp.extractResponse)
+    .catch(this.bp.handleError);
+  }
+
+  public getDevice(identifier: string): Observable<any> {
+    return this._http.get(this.bp.getFullUrl('devices/{identifier}', { identifier }))
+    .map(this.bp.extractResponse)
+    .catch(this.bp.handleError);
+  }
+
+  /**
+   * Check if device has been added before
+   *
+   * @param imei string
+   */
+  public checkDevice(imei: string): Observable<any> {
+    return this._http.get(this.bp.getFullUrl('check-device/{imei}', { imei }))
     .map(this.bp.extractResponse)
     .catch(this.bp.handleError);
   }

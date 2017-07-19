@@ -71,7 +71,7 @@ html {
     }
 
     .btn-primary {
-      @include button-variant($text-primary, $primary, transparent);
+      @include button-variant($white, $primary, transparent);
     }
 
     .btn-accent {
