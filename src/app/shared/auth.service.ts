@@ -49,7 +49,7 @@ export class AuthService {
   }
 
   public logout(returnUrl?: string) {
-    this.nextUrl = returnUrl || 'login';
+    this.nextUrl = returnUrl || '/login';
     NpvnHttp.updateRequestToken(this._storage, '');
     this._storage.clearAll();
     this._router.navigateByUrl(this.nextUrl);

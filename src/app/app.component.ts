@@ -15,6 +15,6 @@ export class AppComponent {
   }
 
   logout() {
-    console.log('Logout Clicked');
+    this.auth.logout('login');
   }
 }

@@ -49,7 +49,7 @@ export class UnbundleComponent implements OnInit {
       this.remote.checkDevice($event.target.value).subscribe(
         (resp) => {
           if (resp.exists) {
-            this.router.navigate([`/unbundle/${$event.target.value}`]);
+            this.router.navigate(['/unbundle', $event.target.value]);
           }
         }, this.errorHandler
       );

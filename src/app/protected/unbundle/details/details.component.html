@@ -1,3 +1,86 @@
-<p>
-  details works!
-</p>
+<div class="d-flex p-2 h-100 justify-content-center align-items-center">
+  <app-loader [loading]="loading"></app-loader>
+
+  <table class="table table-striped table-bordered" *ngIf="device">
+    <tbody>
+      <tr>
+        <th>DEVICE NAME</th>
+        <td>{{device.device.name}}</td>
+      </tr>
+      <tr>
+        <th>Date Created</th>
+        <td>{{device.created_at}}</td>
+      </tr>
+      <tr>
+        <th>CREATED BY</th>
+        <td><b>{{device.creator.name}}</b></td>
+      </tr>
+      <tr>
+        <th>IMEI #</th>
+        <td>{{device.imei}}</td>
+      </tr>
+      <tr>
+        <th>SERIAL #</th>
+        <td>{{device.serial}}</td>
+      </tr>
+      <tr>
+        <td colspan="2" class="text-centered"><b>DEVICE ASSESSMENT</b></td>
+      </tr>
+      <tr>
+        <th>POWER</th>
+        <td [ngClass]="{green: device.unbundling?.power}">
+          <div *ngIf="!device.unbundling?.power">
+            <button class="btn btn-sm btn-danger" (click)="setStatus('power', 0)">
+              <i class="fa fa-times-rectangle" aria-hidden="true"></i> FAILED
+            </button>
+            <button class="btn btn-sm btn-success" (click)="setStatus('power', 1)">
+              <i class="fa fa-check-square" aria-hidden="true"></i> PASSED
+            </button>
+          </div>
+          <span *ngIf="device.unbundling">{{device.unbundling?.power ? 'OKAY': 'FAILED'}}</span>
+        </td>
+      </tr>
+      <tr>
+        <th>ACCESSORIES</th>
+        <td [ngClass]="{green: device.unbundling?.accessories}">
+          <div *ngIf="!device.unbundling?.accessories">
+            <button class="btn btn-sm btn-danger" (click)="setStatus('accessories', 0)">
+              <i class="fa fa-times-rectangle" aria-hidden="true"></i> FAILED
+            </button>
+            <button class="btn btn-sm btn-success" (click)="setStatus('accessories', 1)">
+              <i class="fa fa-check-square" aria-hidden="true"></i> PASSED
+            </button>
+          </div>
+          <span *ngIf="device.unbundling">{{device.unbundling?.accessories ? 'OKAY': 'FAILED'}}</span>
+        </td>
+      </tr>
+      <tr>
+        <th>GEN. ASSESSMENT</th>
+        <td [ngClass]="{green: device.unbundling?.assessment}">
+          <div *ngIf="!device.unbundling?.assessment">
+            <button class="btn btn-sm btn-danger" (click)="setStatus('assessment', 0)">
+              <i class="fa fa-times-rectangle" aria-hidden="true"></i> FAILED
+            </button>
+            <button class="btn btn-sm btn-success" (click)="setStatus('assessment', 1)">
+              <i class="fa fa-check-square" aria-hidden="true"></i> PASSED
+            </button>
+          </div>
+          <span *ngIf="device.unbundling">{{device.unbundling?.assessment ? 'OKAY': 'FAILED'}}</span>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2" class="text-centered">{{device.uuid}}</td>
+      </tr>
+      <tr>
+        <td colspan="2" class="text-right">
+          <a class="btn btn-danger float-left" routerLink="/unbundle">CANCEL</a>
+          <button class="btn btn-success" *ngIf="device.unbundling?.power && device.unbundling?.accessories && device.unbundling?.assessment">
+            <i class="fa fa-check-square" aria-hidden="true"></i> COMPLETE
+          </button>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

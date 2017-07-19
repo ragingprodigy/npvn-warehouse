@@ -1,0 +1,24 @@
+table {
+  max-width: 40em;
+  background: #FFF;
+
+  th {
+    text-transform: uppercase;
+    width: 30%;
+  }
+
+  td {
+    div {
+      display: inline-block;
+      margin-right: 1em;
+    }
+
+    &.green {
+      background: transparentize(green, 0.9);
+    }
+
+    &.red {
+      background: transparentize(red, 0.9);
+    }
+  }
+}

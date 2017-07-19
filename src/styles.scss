@@ -26,6 +26,10 @@ html {
       height: calc(100vh - 56px);
     }
 
+    .confirmModal {
+      margin-top: 20em;
+    }
+
     form {
       &.form-inline {
         &.filter-form {

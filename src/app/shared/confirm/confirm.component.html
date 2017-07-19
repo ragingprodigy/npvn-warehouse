@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <h4 class="modal-title" *ngIf="title">{{title}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body" *ngIf="message">
+  <p>{{message}}</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-danger" (click)="onClose()">
+    <i class="fa fa-times-rectangle" aria-hidden="true"></i> {{closeLabel || 'NO'}}
+  </button>
+  <button type="button" class="btn btn-success" (click)="affirm()">
+    <i class="fa fa-check-square" aria-hidden="true"></i> {{affirmLabel || 'YES'}}
+  </button>
+</div>

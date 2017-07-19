@@ -14,13 +14,13 @@ const routes: Routes = [
   {
     path: '',
     component: ProtectedComponent,
-    // canActivate: [ AuthGuard ],
+    canActivate: [ AuthGuard ],
     children: [
       { path: '', component: DashboardComponent },
       { path: 'dashboard', component: DashboardComponent },
 
       { path: 'unbundle', component: UnbundleComponent },
-      { path: 'unbundle/:imei', component: DetailsComponent },
+      { path: 'unbundle/:identifier', component: DetailsComponent },
 
       { path: 'allocate', component: AllocateComponent },
       { path: 'enroll', component: EnrollComponent },

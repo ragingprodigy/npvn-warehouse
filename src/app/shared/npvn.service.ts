@@ -52,4 +52,10 @@ export class NpvnService {
     .map(this.bp.extractResponse)
     .catch(this.bp.handleError);
   }
+
+  public updateUnbundlingStatus(uuid: string, category: string, status: number): Observable<any> {
+    return this._http.get(this.bp.getFullUrl('unbundling/{uuid}/{category}/{status}', { uuid, category, status }))
+    .map(this.bp.extractResponse)
+    .catch(this.bp.handleError);
+  }
 }
