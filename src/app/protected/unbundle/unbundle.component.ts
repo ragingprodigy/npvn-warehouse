@@ -15,12 +15,14 @@ export class UnbundleComponent implements OnInit {
 
   constructor(private remote: NpvnService, private builder: FormBuilder, private router: Router) { }
 
+  // Error handler
   private errorHandler = (error) => {
     this.loading = false;
     console.log(error);
   }
 
   ngOnInit() {
+    // Fetch Available Devices from Server
     this.remote.listDeviceTypes().subscribe(
       (response) => {
         this.devices = response;
@@ -29,6 +31,7 @@ export class UnbundleComponent implements OnInit {
       this.errorHandler
     );
 
+    // Setup Form
     this.form = this.builder.group({
       device: ['', Validators.required],
       imei: ['', Validators.required],
@@ -36,9 +39,12 @@ export class UnbundleComponent implements OnInit {
     });
   }
 
+  /**
+   * Check if Device IMEI Exists
+   * @param $event FocusEvent
+   */
   checkIMEI($event) {
-      console.log('---', this.form);
-    if ($event.target.validity.valid) {
+    if ($event.target.validity.valid && $event.target.value !== '') {
       // Check if the IMEI exists. If it does, redirect to appropriate view
       this.remote.checkDevice($event.target.value).subscribe(
         (resp) => {
@@ -50,6 +56,9 @@ export class UnbundleComponent implements OnInit {
     }
   }
 
+  /**
+   * Create Device Record
+   */
   createDeviceRecord() {
     if (this.form.valid) {
       // Send Form to Server
@@ -58,8 +67,6 @@ export class UnbundleComponent implements OnInit {
           this.router.navigate([`/unbundle/${device.uuid}`]);
         }, this.errorHandler
       );
-    } else {
-      console.log('Form invalid', this.form);
     }
   }
 
