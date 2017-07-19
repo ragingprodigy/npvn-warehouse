@@ -39,6 +39,14 @@ export class UnbundleComponent implements OnInit {
     });
   }
 
+  cancel() {
+    this.form.setValue({
+      device: '',
+      imei: '',
+      serial: ''
+    });
+  }
+
   /**
    * Check if Device IMEI Exists
    * @param $event FocusEvent
