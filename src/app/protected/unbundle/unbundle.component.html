@@ -2,10 +2,9 @@
   <form class="center-form" [formGroup]="form" (submit)="createDeviceRecord()">
     <h3>Unbundle New Device</h3>
     <div class="form-group">
-      <select class="form-control" formControlNam="device">
+      <select class="form-control" formControlName="device">
         <option *ngIf="!devices.length" value="-">Loading Device Options...</option>
-        <option *ngIf="devices.length && form.controls.device.value == ''" value="">Select Device</option>
-        <option *ngFor="let d of devices" value="{{d.id}}">{{d.name}}</option>
+        <option *ngFor="let d of devices" [value]="d.id">{{d.name}}</option>
       </select>
     </div>
 
@@ -18,10 +17,10 @@
     </div>
 
     <div class="form-group text-right">
-      <button class="float-left btn btn-danger">
+      <button class="float-left btn btn-danger" type="button">
         <i class="fa fa-times-circle" aria-hidden="true"></i> Cancel
       </button>
-      <button class="btn btn-primary">
+      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
         <i class="fa fa-save" aria-hidden="true"></i> SAVE
       </button>
     </div>

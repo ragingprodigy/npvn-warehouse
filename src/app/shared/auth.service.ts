@@ -63,22 +63,22 @@ export class AuthService {
     const loginObservable: Observable<any> = this._http.post(this.bp.getFullUrl('login'), payload).map(this.bp.extractResponse);
     const loginSubject = new Subject<any>();
 
-    // loginObservable.subscribe(
-    //   (resp) => {
-    //     if (null !== resp.token) {
-    //       this._notifier.broadcast(EVENTS.LOGGED_IN, resp.token);
-    //       const tokenUpdated = NpvnHttp.updateRequestToken(this._storage, resp.token);
-    //       loginSubject.next(tokenUpdated);
+    loginObservable.subscribe(
+      (resp) => {
+        if (null !== resp.token) {
+          this._notifier.broadcast(EVENTS.LOGGED_IN, resp.token);
+          const tokenUpdated = NpvnHttp.updateRequestToken(this._storage, resp.token);
+          loginSubject.next(tokenUpdated);
 
-    //       if (tokenUpdated) {
-    //         this._router.navigateByUrl(this.nextUrl === null || this.nextUrl === undefined ? successRoute : this.nextUrl);
-    //       }
-    //     } else {
-    //       this._notifier.broadcast(EVENTS.LOGIN_ERROR, resp);
-    //     }
-    //   },
-    //   error => loginSubject.error(error)
-    // );
+          if (tokenUpdated) {
+            this._router.navigateByUrl(this.nextUrl === null || this.nextUrl === undefined ? successRoute : this.nextUrl);
+          }
+        } else {
+          this._notifier.broadcast(EVENTS.LOGIN_ERROR, resp);
+        }
+      },
+      error => loginSubject.error(error)
+    );
 
     return loginSubject.asObservable();
   }

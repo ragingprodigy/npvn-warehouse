@@ -20,6 +20,22 @@ export class NpvnService {
     .catch(this.bp.handleError);
   }
 
+  /**
+   * Register new Device
+   *
+   * @param payload any
+   */
+  public createDevice(payload: any): Observable<any> {
+    return this._http.post(this.bp.getFullUrl('devices'), payload)
+    .map(this.bp.extractResponse)
+    .catch(this.bp.handleError);
+  }
+
+  /**
+   * Get Device Details
+   *
+   * @param identifier string
+   */
   public getDevice(identifier: string): Observable<any> {
     return this._http.get(this.bp.getFullUrl('devices/{identifier}', { identifier }))
     .map(this.bp.extractResponse)

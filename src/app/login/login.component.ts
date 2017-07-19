@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Config } from '../shared/config';
 import { AuthService } from '../shared/auth.service';
+import { BaseProvider } from '../shared/base.provider';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
   };
 
   constructor(
-    private builder: FormBuilder, private auth: AuthService
+    private builder: FormBuilder, private auth: AuthService, private bp: BaseProvider
   ) { }
 
   ngOnInit() {
@@ -49,12 +50,7 @@ export class LoginComponent implements OnInit {
             this.loginErrorhandler()
           }
         }, (error) => {
-          let e;
-          try {
-            e = error.json();
-          } catch(_) { }
-          
-          this.loginErrorhandler(e);
+          this.bp.handleError(error).subscribe(e => this.loginErrorhandler(e));
         }
       );
     }

@@ -23,7 +23,6 @@ export class UnbundleComponent implements OnInit {
   ngOnInit() {
     this.remote.listDeviceTypes().subscribe(
       (response) => {
-        console.log(response);
         this.devices = response;
         this.loading = false;
       },
@@ -38,6 +37,7 @@ export class UnbundleComponent implements OnInit {
   }
 
   checkIMEI($event) {
+      console.log('---', this.form);
     if ($event.target.validity.valid) {
       // Check if the IMEI exists. If it does, redirect to appropriate view
       this.remote.checkDevice($event.target.value).subscribe(
@@ -53,6 +53,13 @@ export class UnbundleComponent implements OnInit {
   createDeviceRecord() {
     if (this.form.valid) {
       // Send Form to Server
+      this.remote.createDevice(this.form.value).subscribe(
+        (device) => {
+          this.router.navigate([`/unbundle/${device.uuid}`]);
+        }, this.errorHandler
+      );
+    } else {
+      console.log('Form invalid', this.form);
     }
   }
 
