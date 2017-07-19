@@ -10,21 +10,25 @@ import { EnrollComponent } from './enroll/enroll.component';
 import { UnbundleComponent } from './unbundle/unbundle.component';
 import { DetailsComponent } from './unbundle/details/details.component';
 
+const getTitle = (name) => {
+  return { title: name + ' - NPVN Warehouse' }
+};
+
 const routes: Routes = [
   {
     path: '',
     component: ProtectedComponent,
     canActivate: [ AuthGuard ],
     children: [
-      { path: '', component: DashboardComponent },
-      { path: 'dashboard', component: DashboardComponent },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: DashboardComponent, data: getTitle('Dashboard') },
 
-      { path: 'unbundle', component: UnbundleComponent },
-      { path: 'unbundle/:identifier', component: DetailsComponent },
+      { path: 'unbundle', component: UnbundleComponent, data: getTitle('Create Device') },
+      { path: 'unbundle/:identifier', component: DetailsComponent, data: getTitle('Unpack Device') },
 
-      { path: 'allocate', component: AllocateComponent },
-      { path: 'enroll', component: EnrollComponent },
-      { path: 'dispatch', component: DispatchComponent },
+      { path: 'allocate', component: AllocateComponent, data: getTitle('Allocate Device') },
+      { path: 'enroll', component: EnrollComponent, data: getTitle('Enroll Device') },
+      { path: 'dispatch', component: DispatchComponent, data: getTitle('Dispatch Device') },
     ]
   }
 ];
