@@ -33,6 +33,31 @@ export class DetailsComponent implements OnInit {
     );
   }
 
+  certifyUnbundling() {
+    const modalRef = this.modalService.open(ConfirmComponent, { windowClass: 'confirmModal' });
+    modalRef.componentInstance.confirmKey = DetailsComponent.CONFIRM;
+    modalRef.componentInstance.cancelKey = DetailsComponent.CANCEL;
+    modalRef.componentInstance.title = 'Confirm';
+    modalRef.componentInstance.message = 'Are you sure you want to complete this process? This is irreversible!';
+
+    modalRef.result.then(response => {
+      if (response === DetailsComponent.CONFIRM) {
+        this.loading = true;
+
+        this.remote.unbundleDevice(this.device.uuid)
+        .subscribe(
+          (device) => {
+            this.device = device;
+            this.loading = false
+          }, (e) => {
+            this.loading = false;
+            console.log(e);
+          }
+        );
+      }
+    });
+  }
+
   setStatus(category: string, status: number) {
     const modalRef = this.modalService.open(ConfirmComponent, { windowClass: 'confirmModal' });
     modalRef.componentInstance.confirmKey = DetailsComponent.CONFIRM;

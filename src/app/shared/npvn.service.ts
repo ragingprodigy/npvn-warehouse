@@ -32,6 +32,17 @@ export class NpvnService {
   }
 
   /**
+   * Unbundle Device
+   *
+   * @param uuid string
+   */
+  public unbundleDevice(uuid: string): Observable<any> {
+    return this._http.get(this.bp.getFullUrl('unbundle/{uuid}', { uuid }))
+    .map(this.bp.extractResponse)
+    .catch(this.bp.handleError);
+  }
+
+  /**
    * Get Device Details
    *
    * @param identifier string
