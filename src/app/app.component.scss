@@ -25,7 +25,8 @@
 }
 
 .logout {
-  color: red;
+  color: red!important;
+  cursor: pointer;
 
   &:hover {
     text-decoration: underline;
