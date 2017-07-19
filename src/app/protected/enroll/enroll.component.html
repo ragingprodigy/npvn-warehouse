@@ -1,3 +1,24 @@
-<p>
-  enroll works!
-</p>
+<div class="d-flex p-2 h-100 justify-content-center align-items-center">
+  <form class="center-form" [formGroup]="form" (submit)="save()">
+    <h3>Enroll Device</h3>
+
+    <div class="alert alert-info" *ngIf="message">{{message}}</div>
+
+    <div class="form-group">
+      <input class="form-control" (blur)="checkIMEI($event)" formControlName="imei" placeholder="IMEI Number">
+    </div>
+
+    <div class="form-group">
+      <input class="form-control" *ngIf="device" formControlName="misdn" placeholder="Phone Number">
+    </div>
+
+    <div class="form-group text-right">
+      <button class="float-left btn btn-danger" type="button" (click)="cancel()">
+        <i class="fa fa-times-circle" aria-hidden="true"></i> RESET
+      </button>
+      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+        <i class="fa fa-save" aria-hidden="true"></i> Enroll Device
+      </button>
+    </div>
+  </form>
+</div>
