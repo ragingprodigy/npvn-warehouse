@@ -6,6 +6,6 @@
 export const environment = {
   production: false,
   api: 'http://npvn-tools.dev/api/',
-  default_email: '',
-  default_password: ''
+  default_email: 'dapo@softcom.ng',
+  default_password: 'secret'
 };

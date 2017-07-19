@@ -22,6 +22,8 @@ import { DetailsComponent } from './unbundle/details/details.component';
     SharedModule,
     ProtectedRoutingModule
   ],
-  declarations: [ProtectedComponent, DashboardComponent, UnbundleComponent, EnrollComponent, AllocateComponent, DispatchComponent, DetailsComponent]
+  declarations: [
+    ProtectedComponent, DashboardComponent, UnbundleComponent, EnrollComponent, AllocateComponent, DispatchComponent, DetailsComponent
+  ]
 })
 export class ProtectedModule { }
